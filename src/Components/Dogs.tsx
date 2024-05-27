@@ -1,11 +1,28 @@
-// Right now these dogs are constant, but in reality we should be getting these from our server
-// Todo: Refactor to get rid of props (THERE SHOULD BE NO PROPS DRILLING ON THIS COMPONENT)
-export const Dogs = () =>
-  // no props allowed
-  {
-    return (
-      //  the "<> </>"" are called react fragments, it's like adding all the html inside
-      // without adding an actual html element
-      <>{/* Make all the dog cards show up here */}</>
-    );
-  };
+import { DogCard } from "./DogCard";
+import { useDogContext } from "../providers/DogProvider";
+
+export const Dogs = () => {
+  const { dogs } = useDogContext();
+  console.log(dogs);
+
+  return (
+    <>
+      {dogs.map((dog) => (
+        <DogCard
+          key={dog.id}
+          dog={{
+            id: dog.id,
+            image: dog.image,
+            description: dog.description,
+            isFavorite: dog.isFavorite,
+            name: dog.name,
+          }}
+          onTrashIconClick={() => alert("Trash Clicked")}
+          onHeartClick={() => alert("Heart Clicked")}
+          onEmptyHeartClick={() => alert("Empty Heart Clicked")}
+          isLoading={false}
+        />
+      ))}
+    </>
+  );
+};
