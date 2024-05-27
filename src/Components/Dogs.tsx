@@ -3,7 +3,6 @@ import { useDogContext } from "../providers/DogProvider";
 
 export const Dogs = () => {
   const { dogs } = useDogContext();
-  console.log(dogs);
 
   return (
     <>
