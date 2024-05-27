@@ -1,8 +1,15 @@
-const getAllDogs = () => {
-  // fill out method
+import { Dog } from "./types";
+
+const baseUrl = "http://localhost:3000";
+const getAllDogs = async () => {
+  const res = await fetch(`${baseUrl}/dogs`);
+  if (!res.ok) {
+    throw new Error("Cannot find dogs");
+  }
+  return (await res.json()) as Promise<Dog[]>;
 };
 
-const postDog = () => {
+const postDog = async () => {
   // fill out method
 };
 const deleteDogRequest = () => {
