@@ -1,12 +1,20 @@
 import { DogCard } from "./DogCard";
 import { useDogContext } from "../providers/DogProvider";
+import { useNavigationContext } from "../providers/NavigationProvider";
 
 export const Dogs = () => {
   const { dogs } = useDogContext();
+  const { currentView } = useNavigationContext();
+
+  const filteredDogs = dogs.filter((dog) => {
+    if (currentView === "favorited") return dog.isFavorite;
+    if (currentView === "unfavorited") return !dog.isFavorite;
+    return true;
+  });
 
   return (
     <>
-      {dogs.map((dog) => (
+      {filteredDogs.map((dog) => (
         <DogCard
           key={dog.id}
           dog={{
