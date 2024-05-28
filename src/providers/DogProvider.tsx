@@ -10,7 +10,7 @@ import { Requests } from "../api";
 
 type TDogContext = {
   dogs: Dog[];
-  setDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
+  createDog: (dog: Omit<Dog, "id">) => Promise<Dog>;
 };
 
 const DogContext = createContext<TDogContext>({} as TDogContext);
@@ -19,16 +19,20 @@ export const useDogContext = () => useContext(DogContext);
 export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [dogs, setDogs] = useState<Dog[]>([]);
 
-  const refetchData = () => {
-    return Requests.getAllDogs().then(setDogs);
+  const fetchData = () => Requests.getAllDogs().then(setDogs);
+
+  const createDog = async (dog: Omit<Dog, "id">): Promise<Dog> => {
+    const newDog = await Requests.postDog(dog);
+    await fetchData();
+    return newDog;
   };
 
   useEffect(() => {
-    void refetchData();
+    fetchData().catch((err) => console.log(err));
   }, []);
 
   return (
-    <DogContext.Provider value={{ dogs, setDogs }}>
+    <DogContext.Provider value={{ dogs, createDog }}>
       {children}
     </DogContext.Provider>
   );
