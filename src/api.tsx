@@ -1,17 +1,18 @@
 import { Dog } from "./types";
 
 const baseUrl = "http://localhost:3000";
-const getAllDogs = async () => {
-  const res = await fetch(`${baseUrl}/dogs`);
-  if (!res.ok) {
-    throw new Error("Cannot find dogs");
-  }
-  return (await res.json()) as Promise<Dog[]>;
-};
+const getAllDogs = (): Promise<Dog[]> =>
+  fetch(`${baseUrl}/dogs`).then((res): Promise<Dog[]> => res.json());
 
-const postDog = async () => {
-  // fill out method
-};
+const postDog = (dog: Omit<Dog, "id">): Promise<Dog> =>
+  fetch(`${baseUrl}/dogs`, {
+    body: JSON.stringify(dog),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((response): Promise<Dog> => response.json());
+
 const deleteDogRequest = () => {
   // fill out method
 };
