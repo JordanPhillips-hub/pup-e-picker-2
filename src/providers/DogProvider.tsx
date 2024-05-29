@@ -1,10 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { Dog } from "../types";
 import { Requests } from "../api";
 
@@ -15,8 +9,7 @@ type TDogContext = {
   updateDog: (id: number, isFavorite: boolean) => Promise<Dog>;
 };
 
-const DogContext = createContext<TDogContext>({} as TDogContext);
-export const useDogContext = () => useContext(DogContext);
+export const DogContext = createContext<TDogContext>({} as TDogContext);
 
 export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [dogs, setDogs] = useState<Dog[]>([]);
