@@ -3,7 +3,7 @@ import { useDogContext } from "../providers/DogProvider";
 import { useNavigationContext } from "../providers/NavigationProvider";
 
 export const Dogs = () => {
-  const { dogs } = useDogContext();
+  const { dogs, deleteDog, updateDog } = useDogContext();
   const { currentView } = useNavigationContext();
 
   const filteredDogs = dogs.filter((dog) => {
@@ -24,9 +24,9 @@ export const Dogs = () => {
             isFavorite: dog.isFavorite,
             name: dog.name,
           }}
-          onTrashIconClick={() => alert("Trash Clicked")}
-          onHeartClick={() => alert("Heart Clicked")}
-          onEmptyHeartClick={() => alert("Empty Heart Clicked")}
+          onTrashIconClick={() => deleteDog(dog.id)}
+          onHeartClick={() => updateDog(dog.id, !dog.isFavorite)}
+          onEmptyHeartClick={() => updateDog(dog.id, !dog.isFavorite)}
           isLoading={false}
         />
       ))}
