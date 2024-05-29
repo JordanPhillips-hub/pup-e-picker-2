@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
-import { useDogContext } from "../providers/DogProvider";
+import { useDogContext } from "../hooks/api";
 
 const defaultImage = dogPictures.BlueHeeler;
 export const CreateDogForm = () => {

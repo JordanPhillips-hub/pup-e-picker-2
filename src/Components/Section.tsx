@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { useDogContext } from "../providers/DogProvider";
-import { useNavigationContext } from "../providers/NavigationProvider";
+import { useDogContext, useNavigationContext } from "../hooks/api";
 import { TActiveTab } from "../types";
 
 export const Section = ({

@@ -1,7 +1,7 @@
 import { Section } from "./Components/Section";
 import { Dogs } from "./Components/Dogs";
 import { CreateDogForm } from "./Components/CreateDogForm";
-import { useNavigationContext } from "./providers/NavigationProvider";
+import { useNavigationContext } from "./hooks/api";
 
 export function App() {
   const { currentView } = useNavigationContext();

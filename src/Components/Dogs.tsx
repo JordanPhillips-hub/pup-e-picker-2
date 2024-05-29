@@ -1,6 +1,5 @@
 import { DogCard } from "./DogCard";
-import { useDogContext } from "../providers/DogProvider";
-import { useNavigationContext } from "../providers/NavigationProvider";
+import { useDogContext, useNavigationContext } from "../hooks/api";
 
 export const Dogs = () => {
   const { dogs, deleteDog, updateDog } = useDogContext();
