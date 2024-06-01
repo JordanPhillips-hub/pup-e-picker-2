@@ -1,7 +1,7 @@
-import { Dog } from "../types";
 import { FavoriteButton } from "./FavoriteButton";
 import { TrashButton } from "./TrashButton";
 import { UnfavoriteButton } from "./UnfavoriteButton";
+import { Dog } from "../types";
 
 // ! Do Not Make Changes To This File
 export const DogCard = ({
@@ -12,37 +12,22 @@ export const DogCard = ({
   isLoading,
 }: {
   dog: Dog;
-  onTrashIconClick: () => void;
-  onEmptyHeartClick: () => void;
-  onHeartClick: () => void;
+  onTrashIconClick: () => Promise<Dog>;
+  onEmptyHeartClick: () => Promise<Dog>;
+  onHeartClick: () => Promise<Dog>;
   isLoading: boolean;
 }) => {
   return (
     <div className="dog-card">
       {/* Choose which button to show depending on if dog is a favorite */}
       {isFavorite ? (
-        <UnfavoriteButton
-          onClick={() => {
-            onHeartClick();
-          }}
-          disabled={isLoading}
-        />
+        <UnfavoriteButton onClick={onHeartClick} disabled={isLoading} />
       ) : (
-        <FavoriteButton
-          onClick={() => {
-            onEmptyHeartClick();
-          }}
-          disabled={isLoading}
-        />
+        <FavoriteButton onClick={onEmptyHeartClick} disabled={isLoading} />
       )}
 
       {/* Use this button to delete a puppy :( */}
-      <TrashButton
-        onClick={() => {
-          onTrashIconClick();
-        }}
-        disabled={isLoading}
-      />
+      <TrashButton onClick={onTrashIconClick} disabled={isLoading} />
 
       {/* Ignore this  */}
       {/* You can temporarily set a favorite overlay after a user favorites a dog */}
