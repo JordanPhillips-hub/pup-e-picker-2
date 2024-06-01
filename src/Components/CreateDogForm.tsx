@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { dogPictures } from "../dog-pictures";
 import { useDogContext } from "../hooks/api";
+import { dogPictures } from "../dog-pictures";
 
 const defaultImage = dogPictures.BlueHeeler;
 export const CreateDogForm = () => {
@@ -10,8 +10,8 @@ export const CreateDogForm = () => {
     description: "",
   });
 
-  const { name, description, image } = inputs;
   const { isLoading, createDog } = useDogContext();
+  const { name, description, image } = inputs;
 
   const resetForm = () => {
     setInput({ name: "", description: "", image: defaultImage });
@@ -36,7 +36,7 @@ export const CreateDogForm = () => {
       image: image,
       description: description,
       isFavorite: false,
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.error("Error creating dog", err));
 
     resetForm();
   };
@@ -62,7 +62,12 @@ export const CreateDogForm = () => {
         onChange={handleInput}
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
-      <select disabled={isLoading} name="image" id="image" onChange={handleInput}>
+      <select
+        disabled={isLoading}
+        name="image"
+        id="image"
+        onChange={handleInput}
+      >
         {Object.entries(dogPictures).map(([label, pictureValue]) => {
           return (
             <option value={pictureValue} key={pictureValue}>
