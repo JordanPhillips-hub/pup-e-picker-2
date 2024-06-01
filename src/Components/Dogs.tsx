@@ -13,19 +13,19 @@ export const Dogs = () => {
 
   return (
     <>
-      {filteredDogs.map((dog) => (
+      {filteredDogs.map(({ id, image, description, isFavorite, name }) => (
         <DogCard
-          key={dog.id}
+          key={id}
           dog={{
-            id: dog.id,
-            image: dog.image,
-            description: dog.description,
-            isFavorite: dog.isFavorite,
-            name: dog.name,
+            id: id,
+            image: image,
+            description: description,
+            isFavorite: isFavorite,
+            name: name,
           }}
-          onTrashIconClick={() => deleteDog(dog.id)}
-          onHeartClick={() => updateDog(dog.id, !dog.isFavorite)}
-          onEmptyHeartClick={() => updateDog(dog.id, !dog.isFavorite)}
+          onTrashIconClick={() => deleteDog(id)}
+          onHeartClick={() => updateDog(id, !isFavorite)}
+          onEmptyHeartClick={() => updateDog(id, !isFavorite)}
           isLoading={false}
         />
       ))}
