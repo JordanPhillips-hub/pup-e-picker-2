@@ -34,13 +34,11 @@ export const Section = ({
           {navigationTabs.map((tab) => (
             <div
               key={tab.name}
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-              className={`selector ${currentView === tab.name && "active"}`}
+              className={`selector ${currentView === tab.name ? "active" : ""}`}
               onClick={() => handleCurrentView(tab.name)}
             >
               {tab.name === "favorited" || tab.name === "unfavorited"
-                ? // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                  `${tab.name} ${tab.counter}`
+                ? `${tab.name} ${tab.counter ?? ""}`
                 : tab.name}
             </div>
           ))}
