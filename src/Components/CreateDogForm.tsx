@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDogContext } from "../hooks/api";
 import { dogPictures } from "../dog-pictures";
 
@@ -38,6 +39,7 @@ export const CreateDogForm = () => {
       isFavorite: false,
     }).catch((err) => console.error("Error creating dog", err));
 
+    toast.success(`${name} has been created`);
     resetForm();
   };
 
