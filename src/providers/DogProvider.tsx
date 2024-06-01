@@ -4,7 +4,8 @@ import { Requests } from "../api";
 
 type TDogContext = {
   dogs: Dog[];
-  createDog: (dog: Omit<Dog, "id">) => Promise<Dog>;
+  isLoading: boolean;
+  createDog: (dog: Omit<Dog, "id">) => Promise<void>;
   deleteDog: (id: number) => Promise<Dog>;
   updateDog: (id: number, isFavorite: boolean) => Promise<Dog>;
 };
@@ -12,10 +13,14 @@ type TDogContext = {
 export const DogContext = createContext<TDogContext>({} as TDogContext);
 export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [dogs, setDogs] = useState<Dog[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Set Loading State
-  const createDog = (dog: Omit<Dog, "id">): Promise<Dog> =>
-    Requests.postDog(dog);
+  const createDog = (dog: Omit<Dog, "id">): Promise<void> => {
+    setIsLoading(true);
+    return Requests.postDog(dog)
+      .then(() => Requests.getAllDogs().then(setDogs))
+      .finally(() => setIsLoading(false));
+  };
 
   const deleteDog = (id: number): Promise<Dog> => {
     setDogs(dogs.filter((dog) => dog.id !== id));
@@ -42,7 +47,9 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <DogContext.Provider value={{ dogs, createDog, deleteDog, updateDog }}>
+    <DogContext.Provider
+      value={{ dogs, isLoading, createDog, deleteDog, updateDog }}
+    >
       {children}
     </DogContext.Provider>
   );
