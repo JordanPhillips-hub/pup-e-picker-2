@@ -11,7 +11,7 @@ export const CreateDogForm = () => {
   });
 
   const { name, description, image } = inputs;
-  const { createDog } = useDogContext();
+  const { isLoading, createDog } = useDogContext();
 
   const resetForm = () => {
     setInput({ name: "", description: "", image: defaultImage });
@@ -49,7 +49,7 @@ export const CreateDogForm = () => {
         value={name}
         name="name"
         type="text"
-        disabled={false}
+        disabled={isLoading}
         onChange={handleInput}
       />
       <label htmlFor="description">Dog Description</label>
@@ -58,11 +58,11 @@ export const CreateDogForm = () => {
         name="description"
         cols={80}
         rows={10}
-        disabled={false}
+        disabled={isLoading}
         onChange={handleInput}
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
-      <select disabled={false} name="image" id="image" onChange={handleInput}>
+      <select disabled={isLoading} name="image" id="image" onChange={handleInput}>
         {Object.entries(dogPictures).map(([label, pictureValue]) => {
           return (
             <option value={pictureValue} key={pictureValue}>
@@ -71,7 +71,7 @@ export const CreateDogForm = () => {
           );
         })}
       </select>
-      <input type="submit" disabled={false} />
+      <input type="submit" disabled={isLoading} />
     </form>
   );
 };
