@@ -31,15 +31,15 @@ export const Section = ({
       <div className="container-header">
         <div className="container-label">{label}</div>
         <div className="selectors">
-          {navigationTabs.map((tab) => (
+          {navigationTabs.map(({ name, counter }) => (
             <div
-              key={tab.name}
-              className={`selector ${currentView === tab.name ? "active" : ""}`}
-              onClick={() => handleCurrentView(tab.name)}
+              key={name}
+              className={`selector ${currentView === name ? "active" : ""}`}
+              onClick={() => handleCurrentView(name)}
             >
-              {tab.name === "favorited" || tab.name === "unfavorited"
-                ? `${tab.name} ${tab.counter ?? ""}`
-                : tab.name}
+              {name === "favorited" || name === "unfavorited"
+                ? `${name} ${counter ?? ""}`
+                : name}
             </div>
           ))}
         </div>
