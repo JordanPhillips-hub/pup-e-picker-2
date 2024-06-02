@@ -1,5 +1,4 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useDogContext } from "../hooks/api";
 import { dogPictures } from "../dog-pictures";
 
@@ -14,9 +13,8 @@ export const CreateDogForm = () => {
   const { isLoading, createDog } = useDogContext();
   const { name, description, image } = inputs;
 
-  const resetForm = () => {
+  const resetForm = () =>
     setInput({ name: "", description: "", image: defaultImage });
-  };
 
   const handleInput = (
     e:
@@ -32,14 +30,15 @@ export const CreateDogForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createDog({
-      name: name,
-      image: image,
-      description: description,
-      isFavorite: false,
-    }).catch((err) => console.error("Error creating dog", err));
-
-    toast.success(`${name} has been created`);
+    createDog(
+      {
+        name: name,
+        image: image,
+        description: description,
+        isFavorite: false,
+      },
+      name
+    ).catch((err) => console.error("Error creating dog", err));
     resetForm();
   };
 
