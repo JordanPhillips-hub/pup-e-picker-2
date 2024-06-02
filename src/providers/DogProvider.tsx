@@ -5,9 +5,9 @@ import { Requests } from "../api";
 type TDogContext = {
   dogs: Dog[];
   isLoading: boolean;
-  createDog: (dog: Omit<Dog, "id">) => Promise<void>;
-  deleteDog: (id: number) => Promise<Dog>;
-  updateDog: (id: number, isFavorite: boolean) => Promise<Dog>;
+  createDog: (dog: Omit<Dog, "id">, name: string) => Promise<void>;
+  deleteDog: (id: number, name: string) => Promise<Dog>;
+  updateDog: (id: number, isFavorite: boolean, name: string) => Promise<Dog>;
 };
 
 export const DogContext = createContext<TDogContext>({} as TDogContext);
@@ -15,35 +15,38 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [dogs, setDogs] = useState<Dog[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const createDog = (dog: Omit<Dog, "id">): Promise<void> => {
-    setIsLoading(true);
-    return Requests.postDog(dog)
-      .then(() => Requests.getAllDogs().then(setDogs))
-      .finally(() => setIsLoading(false));
-  };
+  const fetchAndSetDogs = () => Requests.getAllDogs().then(setDogs);
 
-  const deleteDog = (id: number): Promise<Dog> => {
-    setDogs(dogs.filter((dog) => dog.id !== id));
-    return Requests.deleteDogRequest(id).catch((error: Error) => {
+  const handleDogRequest = (request: Promise<Dog>) => {
+    return request.catch((error: Error) => {
       setDogs(dogs);
       throw error;
     });
   };
 
-  const updateDog = (id: number, isFavorite: boolean): Promise<Dog> => {
+  const createDog = (dog: Omit<Dog, "id">, name: string): Promise<void> => {
+    setIsLoading(true);
+    return Requests.postDog(dog, name)
+      .then(() => fetchAndSetDogs())
+      .finally(() => setIsLoading(false));
+  };
+
+  const deleteDog = (id: number, name: string): Promise<Dog> => {
+    setDogs(dogs.filter((dog) => dog.id !== id));
+    return handleDogRequest(Requests.deleteDogRequest(id, name));
+  };
+
+  const updateDog = (
+    id: number,
+    isFavorite: boolean,
+    name: string
+  ): Promise<Dog> => {
     setDogs(dogs.map((dog) => (dog.id === id ? { ...dog, isFavorite } : dog)));
-    return Requests.patchFavoriteForDog(id, isFavorite).catch(
-      (error: Error) => {
-        setDogs(dogs);
-        throw error;
-      }
-    );
+    return handleDogRequest(Requests.patchFavoriteForDog(id, isFavorite, name));
   };
 
   useEffect(() => {
-    Requests.getAllDogs()
-      .then(setDogs)
-      .catch((err) => console.error("Error fetching dogs", err));
+    fetchAndSetDogs().catch((err) => console.error("Error fetching dogs", err));
   }, []);
 
   return (
