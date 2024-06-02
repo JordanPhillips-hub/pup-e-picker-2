@@ -10,9 +10,9 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Toaster />
     <DogProvider>
       <NavigationProvider>
+        <Toaster />
         <App />
       </NavigationProvider>
     </DogProvider>
