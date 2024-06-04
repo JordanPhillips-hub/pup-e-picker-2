@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDogContext } from "../hooks/api";
+import { useDogContext } from "../hooks/api.hooks";
 import { dogPictures } from "../dog-pictures";
 
 const defaultImage = dogPictures.BlueHeeler;
