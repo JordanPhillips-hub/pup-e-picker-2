@@ -1,5 +1,4 @@
 import { Icons } from "../icons";
-import { Dog } from "../types";
 
 // ! Do Not Change This Component
 export const FavoriteButton = ({
@@ -7,7 +6,7 @@ export const FavoriteButton = ({
   onClick,
 }: {
   disabled: boolean;
-  onClick: () => Promise<Dog>;
+  onClick: () => void;
 }) => (
   <img
     src={Icons.EmptyHeart}

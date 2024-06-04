@@ -12,9 +12,9 @@ export const DogCard = ({
   isLoading,
 }: {
   dog: Dog;
-  onTrashIconClick: () => Promise<Dog>;
-  onEmptyHeartClick: () => Promise<Dog>;
-  onHeartClick: () => Promise<Dog>;
+  onTrashIconClick: () => void;
+  onEmptyHeartClick: () => void;
+  onHeartClick: () => void;
   isLoading: boolean;
 }) => {
   return (
