@@ -8,7 +8,7 @@ const getAllDogs = async (): Promise<Dog[]> => {
   return await res.json();
 };
 
-const postDog = async (dog: Omit<Dog, "id">): Promise<void> => {
+const postDog = async (dog: Omit<Dog, "id">): Promise<Dog | string> => {
   const res = await fetch(`${baseUrl}/dogs`, {
     body: JSON.stringify(dog),
     method: "POST",
@@ -19,7 +19,7 @@ const postDog = async (dog: Omit<Dog, "id">): Promise<void> => {
   return res.json();
 };
 
-const deleteDogRequest = async (id: number): Promise<void> => {
+const deleteDogRequest = async (id: number): Promise<Dog | string> => {
   const res = await fetch(`${baseUrl}/dog/${id}`, {
     body: "",
     method: "DELETE",
@@ -32,7 +32,7 @@ const deleteDogRequest = async (id: number): Promise<void> => {
 const patchFavoriteForDog = async (
   id: number,
   isFavorite: boolean
-): Promise<void> => {
+): Promise<Dog | string> => {
   const res = await fetch(`${baseUrl}/dog/${id}`, {
     body: JSON.stringify({ isFavorite: isFavorite }),
     method: "PATCH",

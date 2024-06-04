@@ -9,12 +9,12 @@ type TDogContext = {
   favoritedDogs: Dog[];
   unfavoritedDogs: Dog[];
   createDog: (dog: Omit<Dog, "id">, name: string) => Promise<void>;
-  deleteDog: (id: number, name: string) => Promise<void | string>;
+  deleteDog: (id: number, name: string) => Promise<Dog | string>;
   updateDog: (
     id: number,
     isFavorite: boolean,
     name: string
-  ) => Promise<void | string>;
+  ) => Promise<Dog | string>;
 };
 
 export const DogContext = createContext<TDogContext>({} as TDogContext);
@@ -40,7 +40,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchAndSetDogs = () => Requests.getAllDogs().then(setDogs);
 
-  const handleDogRequest = (request: Promise<void>, msg: string) => {
+  const handleDogRequest = (request: Promise<Dog | string>, msg: string) => {
     return request
       .then(() => toast.success(msg))
       .catch((error: Error) => {
@@ -50,7 +50,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
-  const createDog = (dog: Omit<Dog, "id">, name: string) => {
+  const createDog = (dog: Omit<Dog, "id">, name: string): Promise<void> => {
     setIsLoading(true);
     const successMessage = setMessage(name, "successBase")?.create;
     return handleDogRequest(
@@ -61,7 +61,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       .finally(() => setIsLoading(false));
   };
 
-  const deleteDog = (id: number, name: string) => {
+  const deleteDog = (id: number, name: string): Promise<Dog | string> => {
     setDogs(dogs.filter((dog) => dog.id !== id));
     const successMessage = setMessage(name, "successBase")?.delete;
     return handleDogRequest(
@@ -70,7 +70,11 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const updateDog = (id: number, isFavorite: boolean, name: string) => {
+  const updateDog = (
+    id: number,
+    isFavorite: boolean,
+    name: string
+  ): Promise<Dog | string> => {
     setDogs(dogs.map((dog) => (dog.id === id ? { ...dog, isFavorite } : dog)));
     const successMessage = setMessage(name, "successBase")?.update;
     return handleDogRequest(
