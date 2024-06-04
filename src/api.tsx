@@ -20,7 +20,7 @@ const postDog = async (dog: Omit<Dog, "id">): Promise<Dog | string> => {
 };
 
 const deleteDogRequest = async (id: number): Promise<Dog | string> => {
-  const res = await fetch(`${baseUrl}/dog/${id}`, {
+  const res = await fetch(`${baseUrl}/dogs/${id}`, {
     body: "",
     method: "DELETE",
   });
@@ -33,7 +33,7 @@ const patchFavoriteForDog = async (
   id: number,
   isFavorite: boolean
 ): Promise<Dog | string> => {
-  const res = await fetch(`${baseUrl}/dog/${id}`, {
+  const res = await fetch(`${baseUrl}/dogs/${id}`, {
     body: JSON.stringify({ isFavorite: isFavorite }),
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
