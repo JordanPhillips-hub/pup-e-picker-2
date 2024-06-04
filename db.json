@@ -1,1 +1,130 @@
-{"dogs":[{"name":"Deron","image":"/assets/cowardly.png","description":"Division Pakistan if naive Northeast program salmon","isFavorite":true,"id":0},{"name":"Blanca","image":"/assets/boxer.png","description":"Kids Platinum Susana Incredible Technician deposit navigate teem","isFavorite":true,"id":1},{"name":"Colleen","image":"/assets/boxer.png","description":"Modern brr female Road fugit toward Jewelery Eswatini","isFavorite":true,"id":2},{"name":"Bret","image":"/assets/cowardly.png","description":"male cheery male distributed Tasty outstanding Horizontal weepy","isFavorite":true,"id":3},{"name":"Cyril","image":"/assets/chihuahua.avif","description":"Southeast South North meanwhile schemas","isFavorite":false,"id":4},{"name":"Estell","image":"/assets/blue-heeler.png","description":"Executive transmit urgently Analyst Administrator Home Diesel maroon","isFavorite":false,"id":5},{"name":"Mafalda","image":"/assets/corgi.png","description":"groupware perfumed Engineer compress Metal","isFavorite":false,"id":6},{"name":"Ross","image":"/assets/cowardly.png","description":"Martin schemas female Sedan parsing","isFavorite":false,"id":7},{"name":"Vivienne","image":"/assets/blue-heeler.png","description":"loyally Rustic methodical fatally Group Southeast Internal","isFavorite":true,"id":8},{"name":"Jonathon","image":"/assets/boxer.png","description":"SMTP chaperone Southeast worldly duh","isFavorite":false,"id":9},{"name":"Lempi","image":"/assets/cowardly.png","description":"SSL markets indexing South CSS orange Northeast override","isFavorite":true,"id":10},{"name":"Cassidy","image":"/assets/cowardly.png","description":"kilogram Soul radian SSD database","isFavorite":true,"id":11},{"name":"Bradford","image":"/assets/dalmation.png","description":"Bedfordshire cyan tesla for Male","isFavorite":true,"id":12},{"name":"Marcella","image":"/assets/dalmation.png","description":"Iowa blue Bicycle male microchip","isFavorite":true,"id":13},{"name":"Nikolas","image":"/assets/boxer.png","description":"Creative Implementation Beer Berkshire Sleek delectus Forward","isFavorite":true,"id":14},{"name":"Krystel","image":"/assets/chihuahua.avif","description":"North index South Steel black indigo Naira","isFavorite":false,"id":15},{"name":"Aniya","image":"/assets/blue-heeler.png","description":"District Bronze weber Electric male quantifying 1080p Lead","isFavorite":true,"id":16},{"name":"Dane","image":"/assets/corgi.png","description":"HDD Direct Barium exercitationem male Electric Franey nick","isFavorite":false,"id":17},{"name":"Kian","image":"/assets/dalmation.png","description":"Account Solutions female withdrawal North GB Classical Grenada","isFavorite":true,"id":18},{"name":"Ken","image":"/assets/chihuahua.avif","description":"kilogram Germanium Total City silver withdrawal Praseodymium Tennessee","isFavorite":false,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Weldon",
+      "image": "/assets/corgi.png",
+      "description": "yearly Minivan bus unlucky Southwest Electric Guinea Berkshire",
+      "isFavorite": false,
+      "id": 0
+    },
+    {
+      "name": "Marlee",
+      "image": "/assets/dalmation.png",
+      "description": "coherent Latin Electric Maserati determine Island ah Niobium",
+      "isFavorite": true,
+      "id": 1
+    },
+    {
+      "name": "Karolann",
+      "image": "/assets/blue-heeler.png",
+      "description": "World silver Account EXE yuck Holmium Optimized",
+      "isFavorite": true,
+      "id": 2
+    },
+    {
+      "name": "Ruben",
+      "image": "/assets/cowardly.png",
+      "description": "Cambridgeshire squeak alarm Country kilogram Global Minivan",
+      "isFavorite": true,
+      "id": 3
+    },
+    {
+      "name": "Maximilian",
+      "image": "/assets/boxer.png",
+      "description": "Southwest white Gloves South Indiana",
+      "isFavorite": true,
+      "id": 6
+    },
+    {
+      "name": "Nora",
+      "image": "/assets/cowardly.png",
+      "description": "Reggae eminent Fresh Dollar Technician Burundi International",
+      "isFavorite": false,
+      "id": 7
+    },
+    {
+      "name": "Sister",
+      "image": "/assets/corgi.png",
+      "description": "focused Hat East yellow principle",
+      "isFavorite": false,
+      "id": 8
+    },
+    {
+      "name": "Lori",
+      "image": "/assets/chihuahua.avif",
+      "description": "Massachusetts Southeast deposit Island hertz",
+      "isFavorite": true,
+      "id": 9
+    },
+    {
+      "name": "Jasmin",
+      "image": "/assets/blue-heeler.png",
+      "description": "rejoin Garden COM Southwest Crew microchip virtual",
+      "isFavorite": false,
+      "id": 10
+    },
+    {
+      "name": "Aditya",
+      "image": "/assets/blue-heeler.png",
+      "description": "Ergonomic calculate alarm Grocery metabolize Representative Computers ut",
+      "isFavorite": true,
+      "id": 11
+    },
+    {
+      "name": "Jordan",
+      "image": "/assets/cowardly.png",
+      "description": "pamper orchid Electric Freeway Berkshire female parsing",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "Jennyfer",
+      "image": "/assets/cowardly.png",
+      "description": "withdrawal Card connect while Southwest",
+      "isFavorite": false,
+      "id": 13
+    },
+    {
+      "name": "Kaelyn",
+      "image": "/assets/cowardly.png",
+      "description": "Genderflux Refined Radial male vie",
+      "isFavorite": true,
+      "id": 14
+    },
+    {
+      "name": "Alejandra",
+      "image": "/assets/dalmation.png",
+      "description": "Optional green Assurance Bike functional Computer yawning",
+      "isFavorite": false,
+      "id": 15
+    },
+    {
+      "name": "Wilbert",
+      "image": "/assets/cowardly.png",
+      "description": "especially Japan pfft Classical neural Northwest Meadow Optimization",
+      "isFavorite": true,
+      "id": 16
+    },
+    {
+      "name": "Oswaldo",
+      "image": "/assets/dalmation.png",
+      "description": "Product gold Shyanne Buckinghamshire Executive",
+      "isFavorite": false,
+      "id": 17
+    },
+    {
+      "name": "Ewell",
+      "image": "/assets/chihuahua.avif",
+      "description": "ladder Californium Personal lime quantify",
+      "isFavorite": true,
+      "id": 18
+    },
+    {
+      "name": "Allie",
+      "image": "/assets/boxer.png",
+      "description": "synergies Cheese radian Indiana Shoes Buckinghamshire synergies Parks",
+      "isFavorite": false,
+      "id": 19
+    }
+  ]
+}
