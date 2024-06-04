@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useDogContext, useNavigationContext } from "../hooks/api";
+import { useDogContext, useNavigationContext } from "../hooks/api.hooks";
 import { TActiveTab } from "../types";
 
 export const Section = ({
@@ -9,22 +9,14 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { dogs } = useDogContext();
-  const { currentView, setCurrentView } = useNavigationContext();
+  const { favoritedDogs, unfavoritedDogs } = useDogContext();
+  const { currentView, handleCurrentView } = useNavigationContext();
 
-  const favoritedDogs = dogs.filter((dog) => dog.isFavorite);
-  const unfavoritedDogs = dogs.filter((dog) => !dog.isFavorite);
-
-  const navigationTabs = [
+  const navigationTabs: { name: TActiveTab; counter?: string }[] = [
     { name: "favorited", counter: `(${favoritedDogs.length})` },
     { name: "unfavorited", counter: `(${unfavoritedDogs.length})` },
     { name: "create dog" },
   ];
-
-  const handleCurrentView = (tab: string) => {
-    setCurrentView(tab as TActiveTab);
-    if (currentView === tab) setCurrentView("allDogs");
-  };
 
   return (
     <section id="main-section">
